@@ -18,7 +18,7 @@ class Profil extends StatelessWidget {
             child: const Column(
               children: [
                 CircleAvatar(
-                  radius: 40,
+                  radius: 60,
                   backgroundImage: AssetImage("img/mypoto.png"),
                 ),
                 SizedBox(height: 10),
@@ -58,11 +58,11 @@ class Profil extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(width: 20),
+                    SizedBox(width: 20), // Memberikan jarak horizontal.
                     Column(
                       children: [
                         Text(
-                          '5A',
+                          '5B',
                           style: TextStyle(
                             color: Colors.white70,
                           ),
@@ -80,6 +80,7 @@ class Profil extends StatelessWidget {
               ],
             ),
           ),
+          // Expanded digunakan untuk memperluas ListView agar mengisi ruang kosong yang tersisa.
           Expanded(
             child: ListView(
               padding: const EdgeInsets.all(20.0),
@@ -114,9 +115,9 @@ class Profil extends StatelessWidget {
 }
 
 class ProfileItem extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String subtitle;
+  final IconData icon; // Ikon untuk item profil.
+  final String title; // Judul item profil.
+  final String subtitle; // Subtitle item profil.
 
   const ProfileItem({
     super.key,
@@ -128,7 +129,8 @@ class ProfileItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(
+          vertical: 8.0), // Memberikan padding vertikal untuk jarak.
       child: Row(
         children: [
           Icon(icon, color: const Color(0xFFDE302F)),

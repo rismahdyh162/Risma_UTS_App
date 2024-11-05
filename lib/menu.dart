@@ -7,10 +7,8 @@ class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8E1E1),
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF8E1E1),
-        elevation: 0,
+        elevation: 0, // Menghilangkan efek bayangan pada AppBar
         title: const Text(
           'Flowerest',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
@@ -20,10 +18,11 @@ class Menu extends StatelessWidget {
             icon: const Icon(Icons.account_circle, color: Color(0xFFDE302F)),
             onPressed: () {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Profil(),
-                  ));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Profil(),
+                ),
+              );
             },
           ),
         ],
@@ -31,6 +30,7 @@ class Menu extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          // Menyusun elemen secara vertikal
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
@@ -38,31 +38,33 @@ class Menu extends StatelessWidget {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFFDE302F),
               ),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 2),
             const Text(
-              'Tentukan pilihan bungamu disini',
-              style: TextStyle(fontSize: 14, color: Colors.black),
+              'Tentukan pilihan bungamu disini!',
+              style: TextStyle(fontSize: 14),
             ),
-            const SizedBox(height: 16),
-            Row(
+            const SizedBox(height: 2),
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Informasi Booking : 0895366876608',
-                  style: TextStyle(fontSize: 12, color: Colors.grey[700]),
+                  'Informasi booking : 089669067568',
+                  style: TextStyle(fontSize: 14),
                 ),
               ],
             ),
-            const SizedBox(height: 16),
+            const SizedBox(
+                height: 16), // Memberikan jarak sebelum menampilkan produk
             Expanded(
+              // GridView untuk menampilkan koleksi buket bunga dalam grid
               child: GridView.count(
-                crossAxisCount: 2,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                childAspectRatio: 0.7,
+                crossAxisCount: 2, // Menampilkan dua kolom dalam grid
+                mainAxisSpacing: 16, // Jarak vertikal antar item grid
+                crossAxisSpacing: 16, // Jarak horizontal antar item grid
+                childAspectRatio:
+                    0.7, // Menyesuaikan rasio aspek dari setiap item
                 children: const [
                   FlowerCard(
                     imageUrl: 'img/flower1.jpg',
@@ -94,10 +96,11 @@ class Menu extends StatelessWidget {
   }
 }
 
+// Widget untuk menampilkan setiap kartu bunga
 class FlowerCard extends StatelessWidget {
-  final String imageUrl;
-  final String title;
-  final String price;
+  final String imageUrl; // URL gambar bunga
+  final String title; // Judul buket bunga
+  final String price; // Harga buket bunga
 
   const FlowerCard(
       {super.key,
@@ -113,9 +116,9 @@ class FlowerCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            blurRadius: 5,
-            offset: const Offset(0, 3),
+            color: Colors.grey.withOpacity(0.3), // Bayangan untuk kartu
+            blurRadius: 5, // Efek blur bayangan
+            offset: const Offset(0, 3), // Posisi bayangan
           ),
         ],
       ),
@@ -123,12 +126,14 @@ class FlowerCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
+            // Menggunakan ClipRRect untuk membulatkan sudut gambar
             borderRadius: const BorderRadius.vertical(top: Radius.circular(8)),
             child: AspectRatio(
               aspectRatio: 1.0,
               child: Image.asset(
-                imageUrl,
-                fit: BoxFit.cover,
+                imageUrl, // Mengambil gambar agar sesuai URL yang diberikan
+                fit: BoxFit
+                    .cover, // Mengatur gambar agar memenuhi ruang yang tersedia
               ),
             ),
           ),
